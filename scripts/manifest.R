@@ -30,7 +30,7 @@ get_aws_files <- function(project_bucket = "harvard-dataverse-trade", prefix = "
 
 ###########################################################
 ###########################################################
-# Create function to convert dataframe to bipartite matrix
+# Create function to convert data frame to bipartite matrix
 #' Title
 #'
 #' @param df 
