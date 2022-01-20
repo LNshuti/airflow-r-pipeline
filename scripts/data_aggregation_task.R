@@ -5,12 +5,12 @@ library(tidyverse)
 data_bucket <- "harvard-dataverse-trade"
 
 
-#' Title
+#' Get data sets from a specified AWS bucket
 #'
-#' @param project_bucket 
-#' @param prefix 
+#' @param project_bucket Bucket to get data from
+#' @param prefix Optional Prefix of folder whose content we want to get
 #'
-#' @return
+#' @return A data frame of objects stored on AWS
 #' @export
 #'
 #' @examples
