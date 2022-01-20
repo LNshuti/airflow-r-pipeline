@@ -1,23 +1,9 @@
+library(aws.s3)
 library(data.table)
-library(igraph)
-library(ggraph)
-library(tidygraph)
 library(tidyverse)
-#library(ggalluvial)
 
+data_bucket <- "harvard-dataverse-trade"
 
-# Define helper function borrowed from John Graves' health-care-markets repo
-# This function remove unnecessary axes from shape maps
-remove_all_axes <- ggplot2::theme(
-  axis.text = ggplot2::element_blank(),
-  axis.line = ggplot2::element_blank(),
-  axis.ticks = ggplot2::element_blank(),
-  panel.border = ggplot2::element_blank(),
-  panel.grid = ggplot2::element_blank(),
-  axis.title = ggplot2::element_blank(),
-  rect = element_blank(), 
-  plot.background = element_blank()
-)
 
 # Import country identifiers 
 countryweb <-
@@ -36,8 +22,6 @@ trade_data_all_years <-
   as_tibble() %>%
   filter(grepl("partner_sitcproduct4digit", value)) %>%
   pull(value)
-  # Let us focus on the last 10 years. We will expand to include all 
-  # the available data later
   
 trade_df_all_years <-
   trade_data_all_years %>% 
@@ -61,24 +45,10 @@ trade_df_all_years <-
   )) %>%
   bind_rows()
 
-# 2019 trade data
-country_product_df <-
-  fread("dataverse_files/country_partner_sitcproduct4digit_year_2019.csv") %>% 
-  select(export_value, import_value, location_code, partner_code) %>%
-  left_join(country_codes, by = c("location_code" = "country_code")) %>% 
-  rename(from_continent = continent_name) %>% 
-  left_join(country_codes, by = c("partner_code" = "country_code")) %>% 
-  rename(to_continent = continent_name) %>% 
-  filter(from_continent != to_continent) %>%
-  group_by(from_continent, to_continent) %>% 
-  summarize(exports = sum(export_value), imports = sum(import_value)) %>% 
-  ungroup() %>%
-  mutate_at(.vars = c("exports", "imports"), as.numeric) %>%
-  #mutate(exports = round(exports/1000000), imports = round(imports/1000000)) %>%
-  filter(from_continent == "AF" & to_continent != "AF") %>%
-  filter(!(to_continent %in% c("AN", "OC"))) %>%
-  mutate_at(.vars = c("from_continent", "to_continent"), as.factor) 
-  
+s3saveRDS(x = trade_df_all_years, 
+          bucket = data_bucket,
+          object = "continental_import_export_1962_2019.Rds")
+
 
 africa_exports_2019 <-
   trade_df_all_years %>% 
