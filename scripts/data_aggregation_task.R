@@ -6,7 +6,6 @@ source(here::here("/scripts/manifest.R"))
 countryweb <-
   "https://pkgstore.datahub.io/JohnSnowLabs/country-and-continent-codes-list/country-and-continent-codes-list-csv_csv/data/b7876b7f496677669644f3d1069d3121/country-and-continent-codes-list-csv_csv.csv"
 
-
 # Get African country codes
 country_codes <- 
   read.csv(countryweb) %>% 

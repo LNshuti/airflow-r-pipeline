@@ -1,8 +1,6 @@
 # Load necessary libraries and functions
 source(here::here("/scripts/manifest.R"))
 
-
-
 continental_trade_df <- 
   get_aws_files(prefix = "processed") %>%
   filter(grepl(".Rds", value)) %>% 
@@ -11,7 +9,6 @@ continental_trade_df <-
     s3readRDS(data.table::fread,bucket = data_bucket,object = paste0(.x)))
     ) %>% 
   bind_rows()
-
 
 bp_cont_exports_weighted <-
   continental_trade_df %>%
