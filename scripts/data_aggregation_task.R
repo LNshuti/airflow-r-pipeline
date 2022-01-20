@@ -39,15 +39,14 @@ country_codes <-
 
 # Combine trade data from 1962 to 2019
 trade_data_all_years <- 
-  get_aws_files(prefix = "dataverse_files/data/") %>%
-  as_tibble() %>%
+  get_aws_files() %>%
   filter(grepl("partner_sitcproduct4digit", value)) %>%
   pull(value)
 
 trade_df_all_years <-
   trade_data_all_years %>% 
   purrr::map(~(
-    data.table::fread(file.path("dataverse_files",.x)) %>% as_tibble() %>%
+    s3read_using(data.table::fread,bucket = data_bucket,object = paste0(.x))  %>%
       select(year, export_value, import_value, location_code, partner_code) %>%
       left_join(country_codes, by = c("location_code" = "country_code")) %>% 
       rename(from_continent = continent_name) %>% 
@@ -66,6 +65,7 @@ trade_df_all_years <-
   )) %>%
   bind_rows()
 
+
 s3saveRDS(x = trade_df_all_years, 
           bucket = data_bucket,
-          object = "continental_import_export_1962_2019.Rds")
+          object = "processed/continental_import_export_1962_2019.Rds")
