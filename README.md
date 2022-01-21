@@ -6,7 +6,16 @@ To keep the learning engaging, I picked a [real-world data set](https://doi.org/
 
 ### About the Data
 
-In my [other work](https://github.com/LNshuti/LNSHUTI.github.io) I used,  
+As in my [other work](https://github.com/LNshuti/LNSHUTI.github.io), I use the Atlas of Economic Complexity from the Growth Lab at Harvard University. The reasons I love this data source are fourfold:
+
+1) It is detailed down to the product level that each country in the World trades from 1962 to 2019. 
+
+2) The data is standardized to simplify the process of building time series to track changes over time. 
+
+3) It is a regularly used and highly cited source with over fifty thousand downloads. 
+
+4) It is publicly available and can be downloaded [**here**](https://dataverse.harvard.edu/dataset.xhtml?persistentId=doi:10.7910/DVN/H8SFD2)
+
 
 ```
 
