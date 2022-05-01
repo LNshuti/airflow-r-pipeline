@@ -3,7 +3,7 @@ library(data.table)
 library(tidygraph)
 library(tidyverse)
 
-data_bucket <- "harvard-dataverse-trade"
+data_bucket <- "harvard-dataverse-trade-ln"
 
 
 #' Get data sets from a specified AWS bucket
@@ -15,7 +15,7 @@ data_bucket <- "harvard-dataverse-trade"
 #' @export
 #'
 #' @examples
-get_aws_files <- function(project_bucket = "harvard-dataverse-trade", prefix = "") {
+get_aws_files <- function(project_bucket = "harvard-dataverse-trade-ln", prefix = "") {
   # Get AWS File Listing
   get_bucket(project_bucket, prefix = prefix) %>%
     transpose() %>%

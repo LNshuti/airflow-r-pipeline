@@ -33,7 +33,7 @@ trade_df_all_years <-
       summarize(exports = sum(export_value), imports = sum(import_value)) %>% 
       ungroup() %>%
       mutate_at(.vars = c("exports", "imports"), as.numeric) %>%
-      filter(from_continent == "AF" & to_continent != "AF") %>%
+      #filter(from_continent == "AF" & to_continent != "AF") %>%
       mutate_at(.vars = c("from_continent", "to_continent"), as.factor) 
     
   )) %>%
