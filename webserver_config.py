@@ -47,7 +47,7 @@ WTF_CSRF_ENABLED = True
 AUTH_TYPE = AUTH_DB
 
 # Uncomment to setup Full admin role name
-# AUTH_ROLE_ADMIN = 'Admin'
+AUTH_ROLE_ADMIN = 'Admin'
 
 # Uncomment to setup Public role name, no authentication needed
 # AUTH_ROLE_PUBLIC = 'Public'
@@ -62,7 +62,7 @@ AUTH_TYPE = AUTH_DB
 # Config for Flask-Mail necessary for user self registration
 # MAIL_SERVER = 'smtp.gmail.com'
 # MAIL_USE_TLS = True
-# MAIL_USERNAME = 'yourappemail@gmail.com'
+# MAIL_USERNAME = 'leoncen0@gmail.com'
 # MAIL_PASSWORD = 'passwordformail'
 # MAIL_DEFAULT_SENDER = 'sender@gmail.com'
 

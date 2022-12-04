@@ -9,6 +9,9 @@ To keep the learning engaging, I picked a [real-world data set](https://doi.org/
 As in my [other work](https://github.com/LNshuti/LNSHUTI.github.io), I use the Atlas of Economic Complexity from the Growth Lab at Harvard University. The reasons I love this data source are threefold: 1) Detailed down to the product level that each country in the World trades from 1962 to 2019. 2) Standardized to simplify the process of building time series to track changes over time. 3) Regularly used and highly cited source with over *fifty thousand downloads*. It is also publicly available and can be downloaded [**here.**](https://dataverse.harvard.edu/dataset.xhtml?persistentId=doi:10.7910/DVN/H8SFD2)
 
 
+### Exploratory Data Analysis
+After downloading the data and saving the raw data to AWS S3, I use the script under "scripts/data_aggregation_task.R" to add country identifiers based on 3-digit country codes. 
+
 
 ### References
 1. Csárdi, G., Nepusz, T. and Airoldi, E.M., 2016. Statistical network analysis with igraph.
